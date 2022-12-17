@@ -151,10 +151,22 @@ input:focus:invalid {
     border-color: red;
 }
 
-.required-field-notice {
-    font-size: 0.75rem;
+.required-field-notice:valid::after {
+    content: "";
+}
+
+.required-message::after {
+    content: "This field is required";
     color: red;
     font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.password-missmatch::after {
+    content: "Passwords do not match.";
+    color: red;
+    font-weight: 600;
+    font-size: 0.75rem;
 }
 
 
