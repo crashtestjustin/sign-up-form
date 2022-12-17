@@ -24,7 +24,7 @@
         </div>
         <div class="form-section">
             <div class="form-title">Let's do this!</div>
-            <form action="#" method="post">
+            <form action="/" method="GET" id="form">
                 <div class="form-field">
                     <label for="firstname">First Name<span aria-label="required">*</span></label>
                     <div class="input-content">
@@ -55,12 +55,12 @@
                         <input type="tel" id="tel" name="tel" placeholder="xxx-xxx-xxxx">
                         <span></span>
                     </div>
-                    <span class="required-field-notice"></span>
+                    <span></span>
                 </div>
                 <div class="form-field">
                     <label for="pw">Password<span aria-label="required">*</span></label>
                     <div class="input-content">
-                        <input type="password" id="pw" name="pw" required>
+                        <input type="password" id="pw" name="pw" required minlength="4" pattern="^(?=.*[A-Z])[a-zA-Z0-9]{4,}$">
                         <span></span>
                     </div>
                     <span class="required-field-notice"></span>

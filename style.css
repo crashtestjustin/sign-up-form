@@ -134,6 +134,18 @@ input:focus {
     box-shadow: 0px 3px 10px #aeaeae;
 }
 
+.invalid-field-input {
+    border-color: red;
+}
+
+.invalid-password-inputs {
+    border-color: red;
+}
+
+.invalid-password-inputs:focus {
+    border-color: red;
+}
+
 input:focus:invalid + span::before {
     content: "❌";
 }
@@ -143,27 +155,16 @@ input:valid + span::before {
     color: green;
 }
 
-input:valid {
-    background-color: #ffffff;
-}
-
-input:focus:invalid {
-    border-color: red;
-}
-
-.required-field-notice:valid::after {
-    content: "";
-}
-
 .required-message::after {
     content: "This field is required";
     color: red;
     font-weight: 600;
     font-size: 0.75rem;
-}
+}   
 
 .password-missmatch::after {
     content: "Passwords do not match.";
+    position: absolute;
     color: red;
     font-weight: 600;
     font-size: 0.75rem;
