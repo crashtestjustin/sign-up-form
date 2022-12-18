@@ -86,6 +86,7 @@ form {
     border-radius: 8px;
     box-shadow: 3px 3px 20px #aeaeae;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .create-account:hover {
@@ -164,6 +165,14 @@ input:focus:valid + span::before {
 
 .password-missmatch::after {
     content: "Passwords do not match.";
+    position: absolute;
+    color: red;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.password-invalid::after {
+    content: "Password must be minimum 4 characters and include 1 upper case letter.";
     position: absolute;
     color: red;
     font-weight: 600;
@@ -249,6 +258,16 @@ input:focus:valid + span::before {
     box-shadow: 0px 3px 10px #aeaeae;
     transition: 0.2s;
     }
+
+    /* form settings */
     
+    .password-invalid::after {
+        content: "Password must be minimum 4 characters and \A include 1 upper case letter.";
+        white-space: pre-wrap;
+        position: absolute;
+        color: red;
+        font-weight: 600;
+        font-size: 0.75rem;
+    }
 
 }
