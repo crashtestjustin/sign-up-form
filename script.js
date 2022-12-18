@@ -16,10 +16,6 @@ form.addEventListener('submit', e => {
     } 
 });
 
-form.addEventListener('input', e => {
-
-});
-
 pw2.addEventListener('input', e => {
     if (pw.value !== pw2.value) {
         pwMissmatch.className = 'password-missmatch';
