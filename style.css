@@ -150,7 +150,7 @@ input:focus:invalid + span::before {
     content: "❌";
 }
 
-input:valid + span::before {
+input:focus:valid + span::before {
     content: "✓";
     color: green;
 }
