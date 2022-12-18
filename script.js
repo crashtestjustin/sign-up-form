@@ -6,6 +6,8 @@ const input = document.querySelectorAll('input');
 const requiredFieldNotice = document.querySelectorAll('.required-field-notice');
 const inputValideCheck = document.getElementById('input-valid-check');
 
+//need to set up form validation for all required fields on blanks and invalid data
+
 form.addEventListener('submit', e => {
     let messages = [];
     if (pw.value !== pw2.value) {
