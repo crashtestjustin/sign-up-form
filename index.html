@@ -24,28 +24,28 @@
         </div>
         <div class="form-section">
             <div class="form-title">Let's do this!</div>
-            <form action="/" method="GET" id="form">
+            <form action="/" method="GET" id="form" novalidate>
                 <div class="form-field">
                     <label for="firstname">First Name<span aria-label="required">*</span></label>
                     <div class="input-content">
-                        <input type="text" id="firstname" name="firstname" required>
-                        <span></span>
+                        <input type="text" id="firstname" name="firstname" minlength="2" required>
+                        <span id="input-valid-check"></span>
                     </div>
                     <span class="required-field-notice"></span>
                 </div>
                 <div class="form-field">
                     <label for="lastname">Last Name<span aria-label="required">*</span></label>
                     <div class="input-content">
-                        <input type="text" id="lastname" name="lastname" required>
-                        <span></span>
+                        <input type="text" id="lastname" name="lastname" minlength="2" required>
+                        <span id="input-valid-check"></span>
                     </div>
                     <span class="required-field-notice"></span>
                 </div>
                 <div class="form-field">
                     <label for="email">Email<span aria-label="required">*</span></label>
                     <div class="input-content">
-                        <input type="email" id="email" name="email" required>
-                        <span></span>
+                        <input type="email" id="email" name="email" minlength="3" required>
+                        <span id="input-valid-check"></span>
                     </div>
                     <span class="required-field-notice"></span>
                 </div>
@@ -53,15 +53,15 @@
                     <label for="tel">Telephone</label>
                     <div class="input-content">
                         <input type="tel" id="tel" name="tel" placeholder="xxx-xxx-xxxx">
-                        <span></span>
+                        <span id="input-valid-check"></span>
                     </div>
                     <span></span>
                 </div>
                 <div class="form-field">
                     <label for="pw">Password<span aria-label="required">*</span></label>
                     <div class="input-content">
-                        <input type="password" id="pw" name="pw" required minlength="4" pattern="^(?=.*[A-Z])[a-zA-Z0-9]{4,}$">
-                        <span></span>
+                        <input type="password" id="pw" name="pw" minlength="4" pattern="^(?=.*[A-Z])[a-zA-Z0-9]{4,}$" required>
+                        <span id="input-valid-check"></span>
                     </div>
                     <span class="required-field-notice"></span>
                 </div>
