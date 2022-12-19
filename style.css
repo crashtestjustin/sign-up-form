@@ -109,7 +109,7 @@ form {
 .form-field {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 input {
@@ -118,7 +118,7 @@ input {
     border-radius: 4px;
     min-height: 1.5rem;
     flex: auto;
-    max-width: 80vw;
+    /* max-width: 80vw; */
     transition: 0.25s;
 }
 
@@ -139,11 +139,11 @@ input:focus {
     border-color: red;
 }
 
-.invalid-password-inputs {
+.invalid-inputs {
     border-color: red;
 }
 
-.invalid-password-inputs:focus {
+.invalid-inputs:focus {
     border-color: red;
 }
 
@@ -158,10 +158,19 @@ input:focus:valid + span::before {
 
 .required-message::after {
     content: "This field is required";
+    position: absolute;
     color: red;
     font-weight: 600;
     font-size: 0.75rem;
 }   
+
+.min-characters::after {
+    content: "This must be a minimum of 2 characters.";
+    position: absolute;
+    color: red;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
 
 .password-missmatch::after {
     content: "Passwords do not match.";
@@ -177,6 +186,7 @@ input:focus:valid + span::before {
     color: red;
     font-weight: 600;
     font-size: 0.75rem;
+    margin-right: 20px;
 }
 
 
