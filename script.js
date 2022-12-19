@@ -9,34 +9,45 @@ const inputValideCheck = document.getElementById('input-valid-check');
 
 pwPattern = new RegExp('^(?=.*[A-Z])[a-zA-Z0-9]{4,}$');
 
-//need to set up form validation for all required fields on blanks and invalid data
-
+//need to set up form validation for each individual field type based on the validation needed
+//fn and ls - min 2 characters
+//email
+//tel
+console.log(input[0]);
 form.addEventListener('submit', e => {
     password = pw.value;
+    input.forEach (field => {
+        if(field.validity.valueMissing) {
+            requiredFieldNotice.forEach (notice => {
+                notice.className = 'required-field-notice required-message';
+            });
+            field.className = 'invalid-inputs';
+            e.preventDefault();
+        }
+
+    });
     if (pw.value !== pw2.value) {
         pwMissmatch.className = 'password-missmatch'
-        pw.className = 'invalid-password-inputs';
-        pw2.className = 'invalid-password-inputs';
+        pw.className = 'invalid-inputs';
+        pw2.className = 'invalid-inputs';
         e.preventDefault();
-    } //NEED TO FIGURE OUT HOW TO TEST AGAINST A REGEXP FOR THE PASSWORD STYLE
+    }
     if (pw.value.length < 4 || !pwPattern.test(password)) {
         pwCheck.className = ".required-field-notice password-invalid";
-        pw.className = 'invalid-password-inputs';
+        pw.className = 'invalid-inputs';
         e.preventDefault();
-    } else {
-        pwCheck.classList.remove('password-invalid');
     }
 });
 
 pw2.addEventListener('input', e => {
     if (pw.value !== pw2.value) {
         pwMissmatch.className = 'password-missmatch';
-        pw.className = 'invalid-password-inputs';
-        pw2.className = 'invalid-password-inputs';
+        pw.className = 'invalid-inputs';
+        pw2.className = 'invalid-inputs';
     } else {
         pwMissmatch.className = 'required-field-notice';
-        pw.classList.remove('invalid-password-inputs');
-        pw2.classList.remove('invalid-password-inputs');
+        pw.classList.remove('invalid-inputs');
+        pw2.classList.remove('invalid-inputs');
     }
 });
 
@@ -44,7 +55,7 @@ pw.addEventListener('input', e => {
     const password = pw.value;
     if (pw.value.length >= 4 && pwPattern.test(password)) {
         pwCheck.classList.remove('password-invalid');
-        pw.classList.remove('invalid-password-inputs');
+        pw.classList.remove('invalid-inputs');
     }
 })
 
