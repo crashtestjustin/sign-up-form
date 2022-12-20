@@ -8,12 +8,13 @@ const requiredFieldNotice = document.querySelectorAll('.required-field-notice');
 const inputValideCheck = document.getElementById('input-valid-check');
 
 pwPattern = new RegExp('^(?=.*[A-Z])[a-zA-Z0-9]{4,}$');
+telPattern = new RegExp("^\d{3}-\d{3}-\d{4}$|^\d{10}$");
 
 //need to set up form validation for each individual field type based on the validation needed
 //fn and ls - min 2 characters
 //email
 //tel
-console.log(input[0]);
+
 form.addEventListener('submit', e => {
     password = pw.value;
     input.forEach (field => {
@@ -22,10 +23,30 @@ form.addEventListener('submit', e => {
                 notice.className = 'required-field-notice required-message';
             });
             field.className = 'invalid-inputs';
-            e.preventDefault();
         }
-
+        e.preventDefault();
     });
+    for (i=0; i < 6; i++) {
+        if(!input[i].validity.valid) {
+            if(input[i].validity.tooShort) {
+                input[i].className = 'invalid-inputs';
+                requiredFieldNotice[i].className = 'required-field-notice min-characters';
+                e.preventDefault();
+            }
+            if(input[i].validity.typeMismatch) {
+                if(input[i].id === 'email') {
+                    input[i].className = 'invalid-inputs';
+                    requiredFieldNotice[i].className = 'required-field-notice invalid-email';
+                }
+                if(input[i].id === 'tel' && !telPattern.test(input[i])) {
+                    console.log(input[i]);
+                    input[i].className = 'invalid-inputs';
+                    requiredFieldNotice[i].className = 'required-field-notice invalid-tel';
+                }
+                e.preventDefault();
+            }
+        }
+    }
     if (pw.value !== pw2.value) {
         pwMissmatch.className = 'password-missmatch'
         pw.className = 'invalid-inputs';
