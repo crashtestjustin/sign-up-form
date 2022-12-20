@@ -10,11 +10,6 @@ const inputValideCheck = document.getElementById('input-valid-check');
 pwPattern = new RegExp('^(?=.*[A-Z])[a-zA-Z0-9]{4,}$');
 telPattern = new RegExp("^\d{3}-\d{3}-\d{4}$|^\d{10}$");
 
-//need to set up form validation for each individual field type based on the validation needed
-//fn and ls - min 2 characters
-//email
-//tel
-
 form.addEventListener('submit', e => {
     password = pw.value;
     input.forEach (field => {
@@ -37,7 +32,7 @@ form.addEventListener('submit', e => {
                 if(input[i].id === 'email') {
                     input[i].className = 'invalid-inputs';
                     requiredFieldNotice[i].className = 'required-field-notice invalid-email';
-                }
+                } //NEED TO FIGURE OUT HOW TO VALIDATE TELEPHONE????
                 if(input[i].id === 'tel' && !telPattern.test(input[i])) {
                     console.log(input[i]);
                     input[i].className = 'invalid-inputs';
