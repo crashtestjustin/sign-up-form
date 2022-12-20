@@ -118,7 +118,7 @@ input {
     border-radius: 4px;
     min-height: 1.5rem;
     flex: auto;
-    /* max-width: 80vw; */
+    max-width: 80vw;
     transition: 0.25s;
 }
 
@@ -182,6 +182,24 @@ input:focus:valid + span::before {
 
 .password-invalid::after {
     content: "Password must be minimum 4 characters and include 1 upper case letter.";
+    position: absolute;
+    color: red;
+    font-weight: 600;
+    font-size: 0.75rem;
+    margin-right: 20px;
+}
+
+.invalid-email::after {
+    content: "Please enter a valid email address.";
+    position: absolute;
+    color: red;
+    font-weight: 600;
+    font-size: 0.75rem;
+    margin-right: 20px;
+}
+
+.invalid-tel::after {
+    content: "Please enter a valid telephone number.";
     position: absolute;
     color: red;
     font-weight: 600;
