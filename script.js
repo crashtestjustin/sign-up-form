@@ -14,20 +14,19 @@ telPattern = new RegExp("^\d{3}-\d{3}-\d{4}$|^\d{10}$");
 form.addEventListener('submit', e => {
     password = pw.value;
     input.forEach (field => {
-        if(field.validity.valueMissing) {
+        if (field.validity.valueMissing) {
+            field.className = 'invalid-inputs';
             requiredFieldNotice.forEach (notice => {
                 notice.className = 'required-field-notice required-message';
             });
-            field.className = 'invalid-inputs';
+            pwCheck.className = 'required-field-notice required-message';
         }
-        e.preventDefault();
     });
     for (i=0; i < 6; i++) {
         if(!input[i].validity.valid) {
             if(input[i].validity.tooShort) {
                 input[i].className = 'invalid-inputs';
                 requiredFieldNotice[i].className = 'required-field-notice min-characters';
-                e.preventDefault();
             }
             if(input[i].validity.typeMismatch) {
                 if(input[i].id === 'email') {
@@ -38,13 +37,19 @@ form.addEventListener('submit', e => {
                     pwCheck.className = ".required-field-notice password-invalid";
                     pw.className = 'invalid-inputs';
                 }
-                e.preventDefault();
             }
             if(input[i].id === 'tel') {
-                console.log(input[i]);
                 input[i].className = 'invalid-inputs';
                 telErrorMessage.className = 'tel-error-message invalid-tel';
-                e.preventDefault();
+            }
+            e.preventDefault();
+        } else {
+            if(input[i].id === 'tel') {
+                telErrorMessage.className = 'tel-error-message';
+                input[i].classList.remove('invalid-inputs');
+            } else {
+                requiredFieldNotice[i].className = 'required-field-notice';
+                input[i].classList.remove('invalid-inputs');
             }
         }
     }
@@ -52,13 +57,12 @@ form.addEventListener('submit', e => {
         pwMissmatch.className = 'password-missmatch'
         pw.className = 'invalid-inputs';
         pw2.className = 'invalid-inputs';
-        e.preventDefault();
     }
     if (pw.value.length < 4 || !pwPattern.test(password)) {
         pwCheck.className = ".required-field-notice password-invalid";
         pw.className = 'invalid-inputs';
-        e.preventDefault();
     }
+    e.preventDefault();
 });
 
 pw2.addEventListener('input', e => {
