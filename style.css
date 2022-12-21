@@ -82,7 +82,8 @@ form {
     background-color: #596D48;
     color: #ffffff;
     border: none;
-    padding: 15px 150px;
+    padding: 15px 130px;
+    margin: 0 40px;
     border-radius: 8px;
     box-shadow: 3px 3px 20px #aeaeae;
     transition: 0.2s;
@@ -282,6 +283,7 @@ input:focus:valid + span::before {
     color: #ffffff;
     border: none;
     padding: 15px 60px;
+    margin: 0;
     border-radius: 8px;
     box-shadow: 0px 3px 10px #aeaeae;
     transition: 0.2s;
