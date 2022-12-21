@@ -5,6 +5,7 @@ const pwMissmatch = document.getElementById('pw-valid');
 const pwCheck = document.getElementById('pw-check');
 const input = document.querySelectorAll('input');
 const requiredFieldNotice = document.querySelectorAll('.required-field-notice');
+const telErrorMessage = document.getElementById('tel-notice');
 const inputValideCheck = document.getElementById('input-valid-check');
 
 pwPattern = new RegExp('^(?=.*[A-Z])[a-zA-Z0-9]{4,}$');
@@ -32,12 +33,17 @@ form.addEventListener('submit', e => {
                 if(input[i].id === 'email') {
                     input[i].className = 'invalid-inputs';
                     requiredFieldNotice[i].className = 'required-field-notice invalid-email';
-                } //NEED TO FIGURE OUT HOW TO VALIDATE TELEPHONE????
-                if(input[i].id === 'tel' && !telPattern.test(input[i])) {
-                    console.log(input[i]);
-                    input[i].className = 'invalid-inputs';
-                    requiredFieldNotice[i].className = 'required-field-notice invalid-tel';
                 }
+                if(input[i].id === 'pw') {
+                    pwCheck.className = ".required-field-notice password-invalid";
+                    pw.className = 'invalid-inputs';
+                }
+                e.preventDefault();
+            }
+            if(input[i].id === 'tel') {
+                console.log(input[i]);
+                input[i].className = 'invalid-inputs';
+                telErrorMessage.className = 'tel-error-message invalid-tel';
                 e.preventDefault();
             }
         }
@@ -73,15 +79,7 @@ pw.addEventListener('input', e => {
         pwCheck.classList.remove('password-invalid');
         pw.classList.remove('invalid-inputs');
     }
-})
-
-
-
-
-
-function testMessage() {
-    console.log("test");
-}
+});
 
 
 
